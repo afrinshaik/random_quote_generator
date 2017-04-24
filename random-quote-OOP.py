@@ -12,7 +12,8 @@ class Quote:
     #Function to get quote from json
     def get_quote(self):
         #Open url using urllib and decode it
-        data = urllib.request.urlopen(self.url).read().decode('utf-8')
+        req = urllib.request.Request(self.url, headers={'User-Agent' : "Magic Browser"}) 
+        data = urllib.request.urlopen(req).read().decode('utf-8')
         #Replace special characters ' with \'
         data = data.replace(r"\'", "'")
         #Load data from json
